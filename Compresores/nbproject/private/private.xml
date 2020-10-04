@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/compresortextoadaptativo/CalculadorFrecuencias.java</file>
+            <file>file:/home/usuario/repos/borrar2/Compresores/test/Prueba01.java</file>
+            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/ICompresor.java</file>
+            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/Compresores.java</file>
+            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/CompresorGenerico.java</file>
+            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/CompresorPalabrasGenericas.java</file>
+            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/CompresorLempelZiv.java</file>
+            <file>file:/home/usuario/repos/borrar2/Compresores/test/TestCompresorPalabrasGenericas.java</file>
+            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/compresortextoadaptativo/GestorFrecuenciasPalabras.java</file>
+            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/compresortextoadaptativo/FrecuenciaPalabra.java</file>
+        </group>
+    </open-files>
+</project-private>
