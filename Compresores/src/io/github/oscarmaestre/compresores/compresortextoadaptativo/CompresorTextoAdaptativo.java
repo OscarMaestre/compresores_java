@@ -1,7 +1,9 @@
 package io.github.oscarmaestre.compresores.compresortextoadaptativo;
 
 import io.github.oscarmaestre.compresores.CompresorGenerico;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,6 +51,13 @@ public class CompresorTextoAdaptativo extends CompresorGenerico{
                 masFrecuentes.toArray(FrecuenciaPalabra[]::new);
         
                 
+        
+        /*La lista de palabras comprimidas debe incluir todas las palabras
+        antes y despues de ser comprimidas para luego poder descomprimir.
+        Esta lista se guardará en una "cabecera de fichero" */
+        CabeceraFicheroComprimidoConCTA cabecera;
+        cabecera = new CabeceraFicheroComprimidoConCTA();
+        
         /* Recorremos el vector de las más frecuentes...*/
         for (int i = 0; i < arrayMasFrecuentes.length; i++) {
             FrecuenciaPalabra frecuenciaPalabra = arrayMasFrecuentes[i];
@@ -69,13 +78,27 @@ public class CompresorTextoAdaptativo extends CompresorGenerico{
                 /* Pues ¡comprimimos!*/
                 textoFichero = 
                         textoFichero.replace(palabraAComprimir, palabraComprimida);
+                /*Y guardamos la palabra comprimida y sin comprimir en la 
+                cabecera */
+                cabecera.anadirCodificacion(palabraAComprimir, palabraComprimida);
             } /*Fin del if*/
         } /*Fin del for*/
         
-        /*Llegados a este punto, ya tenemos un texto que
-        es "más corto" que el original. Lo volcamos en el fichero
-        de salida */
-        this.volcarTextoEnFichero(ficheroSalida, textoFichero);
+        /*Llegados a este punto, ya tenemos una cabecera y 
+        un texto comprimido que es "más corto" que el original. 
+        Lo volcamos en el fichero de salida */
+        FileOutputStream fichero=new FileOutputStream(ficheroSalida);
+        ObjectOutputStream flujoObjetos;
+        flujoObjetos=new ObjectOutputStream(fichero);
+        flujoObjetos.writeObject(cabecera);
+        flujoObjetos.writeObject(textoFichero);
+        flujoObjetos.close();
+        
     } /*Fin del método*/
+
+    @Override
+    public void descomprimir(String ficheroEntrada, String ficheroSalida) throws IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

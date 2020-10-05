@@ -3,16 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/compresortextoadaptativo/CalculadorFrecuencias.java</file>
-            <file>file:/home/usuario/repos/borrar2/Compresores/test/Prueba01.java</file>
-            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/ICompresor.java</file>
-            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/Compresores.java</file>
-            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/CompresorGenerico.java</file>
-            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/CompresorPalabrasGenericas.java</file>
-            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/CompresorLempelZiv.java</file>
-            <file>file:/home/usuario/repos/borrar2/Compresores/test/TestCompresorPalabrasGenericas.java</file>
-            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/compresortextoadaptativo/GestorFrecuenciasPalabras.java</file>
-            <file>file:/home/usuario/repos/borrar2/Compresores/src/compresores/compresortextoadaptativo/FrecuenciaPalabra.java</file>
+            <file>file:/home/usuario/repos/compresores_java/Compresores/test/TestCompresorPalabrasGenericas.java</file>
+            <file>file:/home/usuario/repos/compresores_java/Compresores/src/io/github/oscarmaestre/compresores/compresortextoadaptativo/CompresorTextoAdaptativo.java</file>
+            <file>file:/home/usuario/repos/compresores_java/Compresores/src/io/github/oscarmaestre/compresores/compresortextoadaptativo/CalculadorFrecuencias.java</file>
+            <file>file:/home/usuario/repos/compresores_java/Compresores/src/io/github/oscarmaestre/compresores/Compresores.java</file>
+            <file>file:/home/usuario/repos/compresores_java/Compresores/src/io/github/oscarmaestre/compresores/CompresorGenerico.java</file>
+            <file>file:/home/usuario/repos/compresores_java/Compresores/src/io/github/oscarmaestre/compresores/compresortextoadaptativo/GestorFrecuenciasPalabras.java</file>
         </group>
     </open-files>
 </project-private>

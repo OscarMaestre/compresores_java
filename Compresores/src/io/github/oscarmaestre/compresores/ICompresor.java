@@ -13,4 +13,5 @@ import java.io.IOException;
  */
 public interface ICompresor {
     public void comprimir(String ficheroEntrada, String ficheroSalida) throws IOException;
+    public void descomprimir(String ficheroEntrada, String ficheroSalida) throws IOException;
 }

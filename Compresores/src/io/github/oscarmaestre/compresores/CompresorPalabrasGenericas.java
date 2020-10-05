@@ -29,4 +29,18 @@ public class CompresorPalabrasGenericas extends CompresorGenerico{
         
         volcarTextoEnFichero(ficheroSalida, textoSalida);
     } /*Fin del comprimir*/
+
+    @Override
+    public void descomprimir(String ficheroEntrada, String ficheroSalida) throws IOException {
+        String textoEntrada=this.getTexto(ficheroEntrada);
+        String textoSalida=textoEntrada;
+        for(Map.Entry<String, String> entrada: diccionario.entrySet()){
+            String cadenaComprimida=entrada.getValue();
+            String cadenaSinComprimir = entrada.getKey();
+            //System.out.println("Reemplazando "+ cadenaParaReemplazar + " con "+ cadenaNuevaEnElTexto);
+            textoSalida = textoSalida.replace(cadenaComprimida, cadenaSinComprimir);
+        }
+        
+        volcarTextoEnFichero(ficheroSalida, textoSalida);
+    }
 } /*Fin de la clase*/
