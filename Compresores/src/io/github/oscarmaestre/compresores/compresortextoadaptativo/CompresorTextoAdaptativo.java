@@ -25,6 +25,7 @@ public class CompresorTextoAdaptativo extends CompresorGenerico{
     el fichero resultante, pero también más se ralentizará el proceso
     */
     final int CANTIDAD_PALABRAS_A_COMPRIMIR;
+    
 
     public CompresorTextoAdaptativo(int CANTIDAD_PALABRAS_A_COMPRIMIR) {
         this.CANTIDAD_PALABRAS_A_COMPRIMIR = CANTIDAD_PALABRAS_A_COMPRIMIR;
@@ -50,7 +51,8 @@ public class CompresorTextoAdaptativo extends CompresorGenerico{
         /* Cogemos todas las líneas del fichero...*/
         Stream<String> lineasFichero = this.getLineasFichero(ficheroEntrada);
         /* Y las únimos en un solo String*/
-        String textoFichero = lineasFichero.collect(Collectors.joining(" "));
+        Stream<String> copiaLineasFichero = this.getLineasFichero(ficheroEntrada);
+        String textoFichero = copiaLineasFichero.collect(Collectors.joining(" "));
         
         /* Averiguamos las más frecuentes*/
         Stream<FrecuenciaPalabra> masFrecuentes = 
@@ -86,23 +88,32 @@ public class CompresorTextoAdaptativo extends CompresorGenerico{
                    palabraComprimida.length()<palabraAComprimir.length();
             /* Si realmente es más corta la versión comprimida...*/
             if (palabraComprimidaResultaSerMasCorta){
-                /* Pues ¡comprimimos!*/
-                textoFichero = 
-                        textoFichero.replace(palabraAComprimir, palabraComprimida);
-                /*Y guardamos la palabra comprimida y sin comprimir en la 
+                
+                /*... pues guardamos la palabra comprimida y sin comprimir en la 
                 cabecera */
                 cabecera.anadirCodificacion(palabraAComprimir, palabraComprimida);
             } /*Fin del if*/
         } /*Fin del for*/
         
-        /*Llegados a este punto, ya tenemos una cabecera y 
-        un texto comprimido que es "más corto" que el original. 
-        Lo volcamos en el fichero de salida */
+        ArrayList<CodificacionCTA> codificaciones = cabecera.getCodificaciones();
+        /*Llegados a este punto, ya tenemos una cabecera y necesitamos 
+        un texto comprimido que es "más corto" que el original. */
+        lineasFichero.forEach(linea->{
+            for (CodificacionCTA codificacion : codificaciones) {
+                String palabraSinComprimir = codificacion.getPalabra();
+                String palabraComprimida = codificacion.getPalabraComprimida();
+                linea.replace(palabraSinComprimir, palabraComprimida);
+                
+            }
+        });
+        
+        /*Lo volcamos en el fichero de salida */
         FileOutputStream ficheroOut=new FileOutputStream(ficheroSalida);
         ObjectOutputStream flujoObjetos;
         flujoObjetos=new ObjectOutputStream(ficheroOut);
+        String textoComprimido=lineasFichero.collect(Collectors.joining());
         flujoObjetos.writeObject(cabecera);
-        flujoObjetos.writeObject(textoFichero);
+        flujoObjetos.writeObject(textoComprimido);
         flujoObjetos.close();
         
     } /*Fin del método*/
