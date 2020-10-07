@@ -39,5 +39,4 @@ public abstract class CompresorGenerico implements ICompresor{
         fw.write(textoSalida);
         fw.close();
     }
-    
 }

@@ -50,4 +50,9 @@ public class CompresorLempelZiv extends CompresorGenerico{
         this.memoria.append(caracter);
     }
 
+    @Override
+    public void descomprimir(String ficheroEntrada, String ficheroSalida) throws IOException {
+        
+    }
+
 }

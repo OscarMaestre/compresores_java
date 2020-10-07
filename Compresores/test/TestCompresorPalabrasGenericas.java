@@ -9,7 +9,9 @@ import io.github.oscarmaestre.compresores.ICompresor;
 import io.github.oscarmaestre.compresores.compresortextoadaptativo.CompresorTextoAdaptativo;
 import java.io.File;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import org.junit.Assert;
 import org.junit.Test;
 
 
@@ -49,7 +51,7 @@ public class TestCompresorPalabrasGenericas {
     }
     
     @Test
-    public void testCompresorAdaptativo(){
+    public void testComprimirConCompresorAdaptativo(){
         String directorioFicheros="/home/usuario/repos/borrar2/";
         String fichero=directorioFicheros+"quijote.txt";
         String ficheroComprimido=fichero+".lza";
@@ -62,6 +64,19 @@ public class TestCompresorPalabrasGenericas {
             this.testCompresion(cta, fichero, ficheroComprimido);
         }
     }
+    @Test
+    public void testDescomprimirConCompresorAdaptativo() throws IOException, NoSuchAlgorithmException{
+        String directorioFicheros="/home/usuario/repos/borrar2/";
+        String fichero=directorioFicheros+"quijote.txt";
+        String ficheroComprimido=fichero+".lza";
+        
+        String ficheroVueltoADescomprimir=fichero+".desc";
+        CompresorTextoAdaptativo cta=new CompresorTextoAdaptativo();
+        cta.descomprimir(ficheroComprimido, ficheroVueltoADescomprimir);
+        boolean ficherosSonIguales = TestFicheros.ficherosSonIguales(fichero, ficheroVueltoADescomprimir);
+        Assert.assertEquals(true, ficherosSonIguales);
+    }
+    
 
     public void testCompresion(ICompresor cg, String rutaFicheroEntrada, String rutaFicheroSalida) {
         try {
@@ -80,6 +95,14 @@ public class TestCompresorPalabrasGenericas {
             System.out.println("Error!");
             ex.printStackTrace();
         }
+    }
+    
+    @Test
+    public void md5Funciona() throws IOException, NoSuchAlgorithmException{
+        String directorioFicheros="/home/usuario/repos/borrar2/";
+        String fichero=directorioFicheros+"quijote.txt";
+        boolean sonIguales=TestFicheros.ficherosSonIguales(fichero, fichero);
+        Assert.assertEquals(true, sonIguales);
     }
 }
 
